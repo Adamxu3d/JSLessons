@@ -1,0 +1,14 @@
+BOM : rowser object model (allows javascript to talk to the browser)
+    - navigator
+    - screen
+    - location 
+    - frames
+    - history 
+DOM : document object model (quite important)
+    - document
+    - represents the html code, just turning everything to document
+    - querySelectorAll() returns a static (not live) NodeList - screenshot
+JavaScript 
+    - object
+    - array
+    - maps

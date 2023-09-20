@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+      h1 {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: pink">This is a header 1</h1>
+    <p id="description" class="bg-red">this is my paragraph</p>
+    <p id="description2" class="bg-red bg-yellow font-courier line-through">
+      this is my paragraph
+    </p>
+
+    <div id="selector-demo">
+      Parent
+      <div id="child">&nbsp; &nbsp; Child</div>
+      <span>
+        &nbsp; &nbsp; Child2
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; GrandChild</p>
+      </span>
+      <p id="child3">Child3</p>
+    </div>
+
+    <div id="box-model-example">width</div>
+
+    <div id="box-container">
+      <div class="box" id="box1">box 1</div>
+      <div class="box" id="box2">box 2 - 小广告</div>
+      <div class="box" id="box3">box 3</div>
+    </div>
+
+    <h2>flexbox example</h2>
+    <div
+      style="display: flex; flex-direction: row; justify-content: space-between"
+    >
+      <div class="box">box1</div>
+      <div class="box">box2</div>
+      <div class="box">box3</div>
+    </div>
+  </body>
+</html>

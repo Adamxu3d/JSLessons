@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+
+      #box:hover {
+        background-color: pink;
+        cursor: pointer;
+      }
+
+      #child {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+      }
+
+      #parent {
+        width: 200px;
+        height: 200px;
+        background-color: lightcoral;
+      }
+
+      #grandparent {
+        width: 300px;
+        height: 300px;
+        background-color: lightpink;
+      }
+    </style>
+  </head>
+  <body>
+    hello world
+    <div id="user" class="common">
+      Users
+      <ul class="box common">
+        <li id="john">John</li>
+        <li id="peter">Peter</li>
+      </ul>
+
+      <h2>this is a box</h2>
+      <div id="box" onclick="alert('in your area')"></div>
+    </div>
+
+    <h2>Capturing vs Bubbling</h2>
+    <div id="grandparent">
+      <div id="parent">
+        <div id="child"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var test = 12;
+    let test2 = 13;
+    const test3 = 14;
+    function sayHi() {
+      alert("Hi1");
+    }
+    // after the update, the function does not belong to the window
+    const sayHi2 = () => alert("Hi2");
+
+    const oUser = document.getElementById("user");
+    const oCommon = document.getElementsByClassName("common"); // live
+    const oLis = document.getElementsByTagName("li");
+    // returns an HTMLCollection (could be accessed via indexes)
+    const boxCommon = document.getElementsByClassName("common box")[0];
+    const peter = boxCommon.getElementsByTagName("li")[1];
+    const oCommon2 = document.querySelectorAll(".common"); // static
+
+    // examples of creating elements
+    const xiaohong = document.createElement("li");
+    xiaohong.innerText = "XiaoHong";
+    xiaohong.id = "xiaohong";
+    // inserting to the front of Xiaohong
+    // peter.before(xiaohong);
+    // peter.after(xiaohong);
+
+    // boxCommon.append(xiaohong);
+    boxCommon.prepend(xiaohong);
+    const xiaozhang = document.createElement("li");
+    xiaozhang.id = "xiaozhang";
+    xiaozhang.innerHTML = "<i><b>Xiao Zhang</i></b>";
+    xiaohong.after(xiaozhang);
+
+    xiaozhang.className = "SanHaoXueSheng BanGanBu BanZhang";
+    xiaozhang.classList.add("LaiOffer");
+    xiaozhang.classList.remove("BanZhang");
+    xiaozhang.style.color = "red";
+
+    const bok = document.getElementById("box");
+    box.onclick = () => {
+      console.log("A");
+    };
+
+    // overwrites the logging of A
+    box.onclick = () => {
+      console.log("B");
+    };
+
+    // does not overwirte the logging
+    box.addEventListener("click", () => {
+      console.log("C");
+    });
+
+    box.addEventListener("click", () => {
+      console.log("D");
+    });
+
+    const grandparent = document.getElementById("grandparent");
+    const parent = document.getElementById("parent");
+    const child = document.getElementById("child");
+
+    grandparent.addEventListener(
+      "click",
+      () => {
+        console.log("grandparent");
+      },
+      false // default value is bubbling : child -> parent -> grandparent
+    );
+
+    parent.addEventListener(
+      "click",
+      () => {
+        console.log("parent");
+      },
+      true // red line - useCapture 从外到内，优先执行
+    );
+
+    child.addEventListener(
+      "click",
+      (event) => {
+        console.log("child");
+      },
+      false
+    );
+  </script>
+</html>

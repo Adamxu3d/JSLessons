@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log("Hello React 1 - ES6");
+      // scoping
+      // block scope - let, const i.e. inside {}, cannot be visited outside
+      // function scope - let, const, var
+
+      /*
+      2 types of functions
+        function fn1() {}
+        const fn2 = (var1, var2) => {var1 + var2};
+      */
+
+      {
+        const xConst = 1;
+        let xLet = 1;
+        // only the var variable can be accessed from the console
+        var xVar = 1;
+      }
+
+      // syntactic sugar for the variables in (), actually defined in {}
+      for (var i = 0; i < 1; i++) {
+        const xConstLoop = 1;
+        let xLetLoop = 1;
+        var xVarLoop = 1;
+      }
+
+      function exampleFunction() {
+        const xConstFunction = 1;
+        let xLetFunction = 1;
+        var xVarFunction = 1;
+      }
+
+      const arrowFunctionExample = () => {
+        const xConstArrow = 1;
+        let xLetArrow = 1;
+        var xVarArrow = 1;
+      };
+
+      // de-structuring 解构
+      // for : array function object
+      const array = [1, true, { name: "Charlie" }];
+      //   const x = array[0];
+      //   const y = array[1];
+      //   const z = array[2];
+      // [] for array, and {} for object,
+      // syntactic sugar as a for loop
+      const [x, y, z] = array;
+
+      const laiofferStudentProfile = {
+        name: "Charlie",
+        age: 40,
+        motto: "something",
+        home: {
+          address: "CA",
+          numOfApartment: 3,
+          furnished: false,
+        },
+      };
+
+      //   const name = laiofferStudentProfile.name;
+      //   const age = laiofferStudentProfile.age;
+      //   const motto = laiofferStudentProfile.motto;
+
+      /* const { name: laiOfferStudentName, age, motto } = laiofferStudentProfile; */
+
+      const {
+        name: laiOfferStudentName,
+        age: laiOfferStudentAge,
+        motto,
+      } = laiofferStudentProfile;
+
+      // default value
+      const plus = (a, b = 1) => {
+        return a + b;
+      };
+
+      // rest, spread operator ...
+      // ... rest operator - store the rest of values to an array - default to an empty array
+      // this does not limit the length of args
+
+      function fn(a, b, ...args) {
+        console.log("args", args);
+      }
+
+      fn(1, 2);
+      fn(1, 2, 3);
+      fn(1, 2, 3, 4);
+      fn(1, 2, "--flag1", "param1", "-flag2", "param2");
+
+      // ... spread operator
+      const arr1 = [1, 2, 3];
+      const arr2 = [4, 5, 6];
+      const arr3 = [...arr1, ...arr2, 7, 8, 9];
+
+      const CharlieStudent = {
+        ...laiofferStudentProfile, // shallow copy
+        age: 50,
+      };
+
+      // arrow function
+      const arrowFunc1 = (a, b) => {
+        return a + b;
+      };
+
+      const arrowFunc2 = (a, b) => a + b;
+
+      const times2 = (a) => a * 2;
+
+      const arrayOfNumbers = [1, 2, 3, 4];
+
+      const arrayTimesTwo = arrayOfNumbers.map((eachItem) => eachItem * 2);
+      const arrayTimes2 = arrayOfNumbers.map(times2);
+
+      // class
+      class Person {
+        constructor(name, age = 18) {
+          this.name = name;
+          this.age = age;
+        }
+
+        methodA() {
+          console.log("name", this.name);
+        }
+
+        methodB() {
+          console.log("age", this.age);
+        }
+      }
+
+      const person1 = new Person("Charlie", 40);
+      person1.methodA();
+
+      class Student extends Person {
+        constructor(name, age, school) {
+          // super utilises the constructor from the parents
+          super(name, age);
+          this.school = school;
+        }
+
+        methodC() {
+          console.log("school", this.school);
+        }
+
+        updateSchool(newSchool) {
+          this.school = newSchool;
+        }
+      }
+
+      const person3 = new Student("XiaoWang", 18, "MIT");
+      person3.methodC();
+
+      // template string
+      const school = "USC";
+      const universityDiploma =
+        "Congrats! you've graduated from LiOffer. Original school is " +
+        school +
+        ". Happy graduation";
+
+      const universityDiploma2 = `Congrats! you've graduated from LiOffer. Original school is ${school}. Happy graduation`;
+    </script>
+  </body>
+</html>
